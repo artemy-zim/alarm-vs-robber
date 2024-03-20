@@ -7,7 +7,7 @@ public class DoorOpenTrigger : MonoBehaviour
 
     private void OnEnable()
     {
-        if(_door == null)
+        if (_door == null)
         {
             enabled = false;
             throw new ArgumentNullException(nameof(_door));
@@ -16,13 +16,13 @@ public class DoorOpenTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<DoorOpener>())
+        if (other.TryGetComponent(out DoorOpener _))
             _door.Open();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<DoorOpener>())
+        if (other.TryGetComponent(out DoorOpener _))
             _door.Close();
     }
 }

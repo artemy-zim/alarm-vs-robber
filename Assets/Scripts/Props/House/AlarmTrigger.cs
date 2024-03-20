@@ -16,13 +16,13 @@ public class AlarmTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Robber>())
+        if (other.TryGetComponent(out Robber _))
             _alarm.Play();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.GetComponent<Robber>())
+        if (other.TryGetComponent(out Robber _))
             _alarm.Stop();
     }
 }
